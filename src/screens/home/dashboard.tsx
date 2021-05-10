@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+//? Components
 import TextInputUI from '../../components/UI/TextInput';
+
+//? Utilities
 import { colors } from '../../utilities/colors';
 import HeightWidth from '../../utilities/HeightWidth';
 
@@ -29,9 +33,6 @@ const Dashboard = () => {
                     inputBorderR={10}
                     elevation={20}
                 />
-                <Text style={styles.__text}>
-
-                </Text>
             </View>
         </View>
     )
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     __textInput: {
         justifyContent: "center",
         alignItems: "center",
-        marginVertical: HeightWidth.getResWidth(20)
+        marginVertical: HeightWidth.getResWidth(20),
     },
     __text: {
         color: colors.veryDarkDesaturatedBlue
