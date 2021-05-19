@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native';
+import ButtonUI from '../../components/UI/Button';
 
 //? Components
 import TextInputUI from '../../components/UI/TextInput';
@@ -33,6 +34,17 @@ const Dashboard = () => {
                     inputBorderR={10}
                     elevation={20}
                 />
+                <View>
+                    <ButtonUI
+                        onPress={() => { }}
+                        title={"Press Me"}
+                        backgroundColor={colors.vividOrange}
+                        elevation={5}
+                        borderRadius={10}
+                        height={HeightWidth.getResWidth(55)}
+                        textStyles={{ color: colors.white }}
+                    />
+                </View>
             </View>
         </View>
     )

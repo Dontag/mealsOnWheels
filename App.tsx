@@ -1,45 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 //?Screens
-import Dashboard from './src/screens/home/dashboard';
 import Login from './src/screens/auth/login';
+import BottomTabStack from './src/BottomTabStack';
 
-const Tab = createMaterialBottomTabNavigator();
+//?Stacks
+const authStack = createStackNavigator();
+const mainStack = createStackNavigator();
+
 const App = () => {
 
-  const bottomTabContainer = () =>
-    <Tab.Navigator initialRouteName={"Dashboard"}>
-      <Tab.Screen
-        name="Dashboard"
-        component={Dashboard}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
-            <Icon name="home" color={color} size={26} />
-          )
-        }}
-      />
-      <Tab.Screen
-        name="Login"
-        component={Login}
-        options={{
-          tabBarLabel: 'Login',
-          tabBarIcon: ({ color }) => (
-            <Icon name="log-in-outline" color={color} size={26} />
-          )
-        }}
-      />
-    </Tab.Navigator>
+
+  const createAuthStack = () =>
+    <authStack.Navigator initialRouteName="SplashScreen">
+      {/* <authStack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} /> */}
+      <authStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+    </authStack.Navigator>
+
+  const createMainStack = () =>
+    <mainStack.Navigator initialRouteName="homeStack">
+      <mainStack.Screen name={"authStack"} component={createAuthStack} options={{ headerShown: false }} />
+      <mainStack.Screen name={"homeStack"} component={BottomTabStack} options={{ headerShown: false }} />
+    </mainStack.Navigator>
 
   return (
     <NavigationContainer>
       <StatusBar />
-      {bottomTabContainer()}
+      {createMainStack()}
     </NavigationContainer>
   )
 }

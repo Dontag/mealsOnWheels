@@ -1,8 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, ActivityIndicator } from 'react-native';
-import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
+
+interface Props {
+    leftIconSize?: number,
+    leftText?: string,
+    leftIconColor?: string,
+    leftIconName?: string,
+    leftIconStyle?: object,
+    rightIconSize?: number,
+    rightIconColor?: string,
+    rightIconName?: string,
+    width?: number,
+    height?: number,
+    backgroundColor?: string,
+    elevation?: number,
+    size?: string,
+    borderRadius?: number,
+    title: string,
+    textStyles?: any,
+    onPress: VoidFunction,
+    otherStyle?: object,
+    activityIndicator?: boolean,
+    disabled?: boolean,
+    leftTextStyle?: object,
+    enableLinear?: boolean,
+    linearColor1?: string,
+    linearColor2?: string,
+}
 
 //utilities
 import { Width, colors } from '../../utilities/utilities'
@@ -20,23 +46,33 @@ const __btnlg = {
     height: 60
 }
 
-class ButtonUI extends Component {
-
-    ButtonInnerContain = () => {
-        const {
-            title,
-            leftText,
-            leftIconSize,
-            leftIconColor,
-            leftIconName,
-            leftIconStyle,
-            rightIconSize,
-            rightIconColor,
-            rightIconName,
-            textStyles,
-            activityIndicator,
-            leftTextStyle,
-        } = this.props;
+const ButtonUI = ({
+    size = "sm",
+    width,
+    backgroundColor = colors.brightRed,
+    elevation = 1,
+    borderRadius = 2,
+    height,
+    onPress,
+    otherStyle,
+    disabled = false,
+    enableLinear = false,
+    linearColor1 = colors.softRed,
+    linearColor2 = colors.brightRed,
+    title,
+    leftText,
+    leftIconSize,
+    leftIconColor,
+    leftIconName,
+    leftIconStyle,
+    rightIconSize,
+    rightIconColor,
+    rightIconName,
+    textStyles,
+    activityIndicator = false,
+    leftTextStyle,
+}: Props) => {
+    const ButtonInnerContain = () => {
         return (
             <>
                 {!activityIndicator ? <>
@@ -59,95 +95,40 @@ class ButtonUI extends Component {
         )
     }
 
-    render() {
-        const {
-            size,
-            width,
-            backgroundColor,
-            elevation,
-            borderRadius,
-            height,
-            onPress,
-            otherStyle,
-            disabled,
-            enableLinear,
-            linearColor1,
-            linearColor2
-        } = this.props;
-        return (
-            <>
-                {!enableLinear ? <TouchableOpacity
-                    disabled={disabled}
-                    style={[styles.__buttonContainer,
-                    size === "sm" ? __btnsm :
-                        size === "md" ? __btnmd :
-                            size === "lg" ? __btnlg :
-                                null,
-                    { backgroundColor: backgroundColor, elevation: elevation, borderRadius: borderRadius },
-                    width ? { width: width } : null, height ? { height: height } : null,
-                    { ...otherStyle }
-                    ]}
-                    onPress={onPress}
-                >
-                    {this.ButtonInnerContain()}
-                </TouchableOpacity> :
-                    <TouchableOpacity disabled={disabled} onPress={onPress}>
-                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[linearColor1, linearColor2]}
-                            style={[styles.__buttonContainer,
-                            size === "sm" ? __btnsm :
-                                size === "md" ? __btnmd :
-                                    size === "lg" ? __btnlg :
-                                        null,
-                            { backgroundColor: backgroundColor, elevation: elevation, borderRadius: borderRadius },
-                            width ? { width: width } : null, height ? { height: height } : null,
-                            { ...otherStyle }
-                            ]}>
-                            {this.ButtonInnerContain()}
-                        </LinearGradient>
-                    </TouchableOpacity>
-                }
-            </>
-        )
-    }
-}
-
-ButtonUI.propTypes = {
-    leftIconSize: PropTypes.number,
-    leftText: PropTypes.string,
-    leftIconColor: PropTypes.string,
-    leftIconName: PropTypes.string,
-    leftIconStyle: PropTypes.object,
-    rightIconSize: PropTypes.number,
-    rightIconColor: PropTypes.string,
-    rightIconName: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
-    backgroundColor: PropTypes.string,
-    elevation: PropTypes.number,
-    size: PropTypes.string,
-    borderRadius: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    textStyles: PropTypes.any,
-    onPress: PropTypes.any,
-    otherStyle: PropTypes.object,
-    activityIndicator: PropTypes.bool,
-    disabled: PropTypes.bool,
-    leftTextStyle: PropTypes.object,
-    enableLinear: PropTypes.bool,
-    linearColor1: PropTypes.string,
-    linearColor2: PropTypes.string,
-}
-
-ButtonUI.defaultProps = {
-    size: "sm",
-    backgroundColor: colors.brightRed,
-    elevation: 1,
-    borderRadius: 2,
-    activityIndicator: false,
-    disabled: false,
-    enableLinear: false,
-    linearColor1: colors.softRed,
-    linearColor2: colors.brightRed,
+    return (
+        <>
+            {!enableLinear ? <TouchableOpacity
+                disabled={disabled}
+                style={[styles.__buttonContainer,
+                size === "sm" ? __btnsm :
+                    size === "md" ? __btnmd :
+                        size === "lg" ? __btnlg :
+                            null,
+                { backgroundColor: backgroundColor, elevation: elevation, borderRadius: borderRadius },
+                width ? { width: width } : null, height ? { height: height } : null,
+                { ...otherStyle }
+                ]}
+                onPress={onPress}
+            >
+                {ButtonInnerContain()}
+            </TouchableOpacity> :
+                <TouchableOpacity disabled={disabled} onPress={onPress}>
+                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[linearColor1, linearColor2]}
+                        style={[styles.__buttonContainer,
+                        size === "sm" ? __btnsm :
+                            size === "md" ? __btnmd :
+                                size === "lg" ? __btnlg :
+                                    null,
+                        { backgroundColor: backgroundColor, elevation: elevation, borderRadius: borderRadius },
+                        width ? { width: width } : null, height ? { height: height } : null,
+                        { ...otherStyle }
+                        ]}>
+                        {ButtonInnerContain()}
+                    </LinearGradient>
+                </TouchableOpacity>
+            }
+        </>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -174,6 +155,7 @@ const styles = StyleSheet.create({
     },
     __text: {
         fontSize: 17,
+        fontFamily: "Lato-Regular"
     },
     __rightIconView: {
         paddingHorizontal: 10,

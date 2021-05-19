@@ -6,5 +6,6 @@ export const colors = {
     veryLightgrayishRed: "#bfbebe",
     veryDarkGray: "#444444",
     veryDarkDesaturatedBlue: "#284150",
-    blackTrans: 'rgba(0,0,0,0.7)'
+    blackTrans: 'rgba(0,0,0,0.7)',
+    vividOrange: '#fa4a0c'
 }
