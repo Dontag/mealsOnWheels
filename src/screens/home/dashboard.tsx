@@ -34,7 +34,7 @@ const Dashboard = () => {
                     inputBorderR={10}
                     elevation={20}
                 />
-                <View>
+                <View style={styles.__button}>
                     <ButtonUI
                         onPress={() => { }}
                         title={"Press Me"}
@@ -62,6 +62,9 @@ const styles = StyleSheet.create({
     },
     __text: {
         color: colors.veryDarkDesaturatedBlue
+    },
+    __button: {
+        marginTop: 10
     }
 })
 export default Dashboard;

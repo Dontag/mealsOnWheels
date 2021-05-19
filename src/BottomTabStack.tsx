@@ -1,35 +1,52 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 //?Screens
 import Dashboard from './screens/home/dashboard';
-import CustomTabBar from './components/CustomTab/CustomTabBar';
 import Login from './screens/auth/login';
+import { colors } from './utilities/colors';
 
 const BottomTabStack = () => {
 
     return (
         <Tab.Navigator
-            tabBar={props => <CustomTabBar {...props} />}
+            activeColor={colors.vividOrange}
+            inactiveColor={colors.veryLightgrayishRed}
+            barStyle={styles.__tabBar}
+            shifting
             initialRouteName={"Dashboard"}>
             <Tab.Screen
                 name="Dashboard"
                 component={Dashboard}
-                initialParams={{ icon: 'home' }}
+                options={{
+                    tabBarLabel: 'Dashboard',
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="home" color={color} size={26} />
+                    ),
+                }}
             />
             <Tab.Screen
                 name="Login"
                 component={Login}
-                initialParams={{ icon: 'log-in-outline' }}
+                options={{
+                    tabBarLabel: 'Login',
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="log-in-outline" color={color} size={26} />
+                    ),
+                }}
             />
         </Tab.Navigator>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    __tabBar: {
+        backgroundColor: colors.white
+    }
+})
 
 export default BottomTabStack;
