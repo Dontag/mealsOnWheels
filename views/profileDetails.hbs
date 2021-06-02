@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>My Form </title>
+    </head>
+    <body>
+        <div class='Container'>
+                {{!-- <div>First Name: Yash</div>
+  
+                <div>Last Name: Talathi</div> --}}
+            {{#each users}}
+                {{#if this.firstName}}
+                    <div>First Name: {{this.firstName}}</div>
+                {{else}}
+                    <div>First Name: NA</div>
+                {{/if}}
+
+                
+                {{#if this.lastName}}
+                    <div>Last Name: {{this.lastName}}</div> 
+                {{else}}
+                    <div>Last Name: NA</div>          
+                {{/if}}
+                <br><br>
+            {{/each}}
+            {{!-- {{#each users}} --}}
+                {{!-- {{#if users.firstName}}
+                    <div>First Name: {{users.firstName}}</div>
+                {{else}}
+                    <div>First Name: NA</div>
+                {{/if}}
+
+                
+                {{#if users.lastName}}
+                    <div>Last Name: {{users.lastName}}</div> 
+                {{else}}
+                    <div>Last Name: NA</div>          
+                {{/if}}
+                <br><br> --}}
+            {{!-- {{/each}} --}}
+    
+        </div>
+    </body>
+</html>

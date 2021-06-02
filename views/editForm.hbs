@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>My Form </title>
+    </head>
+    <body>
+        <div class='Container'>
+            {{#each users}}
+            <form action = "/tests/updateDoc:{{this._id}}" method = "POST">
+                <input type = "text" name = "firstName" value = {{this.firstName}}><br><br>
+                <input type = "text" name = "lastName" value = {{this.lastName}} ><br><br>
+                <button type = "submit">Update Profile</button>
+            </form>
+            {{/each}}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>My Form </title>
+    </head>
+    <body>
+        <div class='Container'>
+            {{#each users}}
+            <form action = "/tests/selectedAddress" method = "POST">
+                <input type ="radio" name ="a" value = "address" >
+                <label for="address">{{this.address}}</label><br><br>
+                
+                <input type = "radio" name= "b" value = "address1">
+                <label for="address1">{{this.address1}}</label><br><br>
+                
+                <input type = "radio" name = "c" value = "address4">
+                <label for="address4">{{this.address4}}</label><br><br>
+
+                <button type = "submit">Submit Form</button>
+            {{/each}}   
+            </form>
+        </div>
+    </body>
+</html>

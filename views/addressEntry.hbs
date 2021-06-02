@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Add Address</title>
+    </head>
+    <script lang= 'javascript' type='text/javascript'>
+        //{{!-- fuction add_address(){
+          //  var textbox = document.getElementById("extra-address-div");
+           // textbox.innerHTML += "<input type ='text' name = 'address'><br>";
+        //} --}}
+        function showcount(){
+            
+            var div_id = document.getElementById('extra-address-div')
+            count = div_id.childElementCount
+            
+            var div_count = document.getElementById('count')
+            var element_1 = document.createElement('input')
+            
+            element_1.setAttribute('placeholder',count)
+            div_count.appendChild(element_1)
+
+        }
+
+        function appendrow(){
+            var div_id = document.getElementById('extra-address-div')
+            if(div_id.childElementCount < 6){                
+                var element = document.createElement('TextArea')
+                //element.setAttribute('type','text')
+                element.setAttribute('name','address')
+                element.setAttribute('placeholder','Enter Address')
+
+                
+                div_id.appendChild(element)
+                div_id.appendChild(document.createElement('br'))
+                div_id.appendChild(document.createElement('br'))
+                count = div_id.childElementCount
+            }else{
+            
+                document.getElementById("Error-msg").innerHTML = "You can only add 3 addresses"
+            }
+            
+        }
+
+    </script>
+    <body>
+        <div class='Container'>
+            <div id = 'address-div'>
+                <TextArea name = "address" placeholder = "Enter Address" required = "true"></TextArea><br><br>
+            </div>
+            <div id = 'extra-address-div'></div>
+            <div id = 'button-div'>
+                <button  onclick="appendrow()">Add Address</button>
+                <button  onclick="showcount()">Show Count</button>
+                <br><p id = 'Error-msg'><p>
+            </div>
+            <div id = 'count'></div>
+            <form action = "/tests/successPage" method = "POST"> 
+               <br><br> <button type = "submit">Submit</button>
+            </form>
+
+            
+        </div>
+    </body>
+</html>

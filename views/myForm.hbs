@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>My Form </title>
+    </head>
+    <script lang='javascript' type= 'text/javascript'>
+        function appendTextArea(){
+            var div_id = document.getElementById('extra-address')
+
+            if(div_id.childElementCount < 6){                
+                var element = document.createElement('TextArea')
+                
+                var count = div_id.childElementCount
+                
+                element.setAttribute('name','address'+ (count+1))
+                element.setAttribute('placeholder','Enter Address')
+
+                div_id.appendChild(element)
+                div_id.appendChild(document.createElement('br'))
+                div_id.appendChild(document.createElement('br'))
+                
+            }else{
+            
+                document.getElementById("Error-msg").innerHTML= "You can only add 3 addresses"
+            }
+            
+        }
+      
+
+    </script>
+    <body>
+        <div class='Container'>
+            <form action = "/tests/createDoc" method = "POST">
+                <input type = "text" name = "firstName" placeholder = "First Name" required = "true"><br><br>
+                <input type = "text" name = "lastName" placeholder = "Last Name" required = "true"><br><br>
+                <TextArea name = "address" placeholder = "Enter Address" required = "true" ></TextArea><br><br>
+                
+                <div id = 'extra-address'></div>
+                
+                <button type="button" onclick="appendTextArea()">Add Address</button>
+
+                <p id ='Error-msg' style="color: red "></p>
+                
+                <button type = "submit">Submit Form</button>
+                
+            </form>
+        </div>
+    </body>
+</html>
