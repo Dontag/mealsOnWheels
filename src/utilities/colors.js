@@ -1,6 +1,7 @@
 export const colors = {
     transparent: "transparent",
     white: "#FFFFFF",
+    offWhite:"#F5F5F8",
     black: "#000000",
     lightGrayishCyan: "#efeeee",
     veryLightgrayishRed: "#bfbebe",

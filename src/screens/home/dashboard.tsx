@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native';
+import { Props } from '../../common/interfaces/commonInterface';
 import ButtonUI from '../../components/UI/Button';
 
 //? Components
@@ -9,7 +10,7 @@ import TextInputUI from '../../components/UI/TextInput';
 import { colors } from '../../utilities/colors';
 import HeightWidth from '../../utilities/HeightWidth';
 
-const Dashboard = () => {
+const Dashboard = ({ navigation, route }: Props) => {
 
     const [name, setName] = useState('');
 
@@ -36,8 +37,8 @@ const Dashboard = () => {
                 />
                 <View style={styles.__button}>
                     <ButtonUI
-                        onPress={() => { }}
-                        title={"Press Me"}
+                        onPress={() => { navigation.navigate("Schedule") }}
+                        title={"Schedule"}
                         backgroundColor={colors.vividOrange}
                         elevation={5}
                         borderRadius={10}
