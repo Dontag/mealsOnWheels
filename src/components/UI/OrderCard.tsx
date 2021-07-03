@@ -1,7 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
+
+//Components
+import InrDcrButton from './InrDcrButton';
+
+// Utilities
 import { black, white } from 'react-native-paper/lib/typescript/styles/colors'
 import { colors } from '../../utilities/colors'
+
 
 const DishData = 
 {
@@ -12,12 +18,17 @@ const DishData =
 }
     
 
-const DishCardUI = () => {
+const OrderCard = () => {
     return (
         <View style={styles.__inputView}>
             <Text style={styles._priceTagView}>${DishData.Price}</Text>
             <Text style={styles._dishNameView}>{DishData.Name}</Text>
-            <Image style={styles._imageView} source={{uri: DishData.Image}} />
+            <View style={styles._ImageContainer}>
+                 <Image style={styles._imageView} source={{uri: DishData.Image}} />
+            </View>
+            <View>
+            </View>
+            
         </View>
     )
 }
@@ -28,20 +39,19 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         overflow: "hidden",
-        paddingLeft: 8,
-        width:165,
-        height: 200,
+        width:260,
+        height: 100,
         backgroundColor: 'white',
-        elevation: 4,
+        elevation: 2,
         borderRadius: 10,
-        paddingVertical:10,
+        marginVertical:5,
         shadowOffset: { width: 0, height: 2 },
     },
     _priceTagView: {
         position: "absolute",
-        paddingLeft: 120,
-        paddingRight: 20,
-        paddingTop: 160,
+        paddingRight: 40,
+        paddingTop:40,
+        paddingBottom:10,
         color: 'orange',
         textAlign: 'right',
         fontSize: 15,
@@ -50,21 +60,27 @@ const styles = StyleSheet.create({
     },
     _dishNameView: {
         position: "absolute",
-        paddingRight:80,
-        paddingTop:160,
+        paddingRight:20,
+        paddingBottom:20,
         color: 'black',
         textAlign: 'left',
         fontSize: 15,
         fontFamily: "Lato-Regular"
     },
 
+    _ImageContainer: {
+        position: "absolute",
+        paddingRight:180,
+        paddingLeft:40,
+        paddingTop:60,
+    },
+
     _imageView: {
         position: "absolute",
-        width: 120,
-        height: 120,
-        top:30,
+        width: 60,
+        height: 60,
         borderRadius:90,
     }
 })
 
-export default DishCardUI;
+export default OrderCard;

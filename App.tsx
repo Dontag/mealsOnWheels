@@ -10,7 +10,8 @@ import Dashboard from './src/screens/home/dashboard';
 import Login from './src/screens/auth/login';
 import DishDetails from './src/components/UI/ProfileDetails';
 import PaymentScreen from './src/components/UI/PaymentScreen';
-import CartScreen from './src/components/UI/CartScreen';
+import CartScreen from './src/components/UI/CardScreen';
+import ItemBox from './src/components/UI/CardScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 const App = () => {
@@ -47,16 +48,17 @@ const App = () => {
           )
         }}
       />
-      <Tab.Screen
-        name="Cart"
+    <Tab.Screen
+        name="Delete"
         component={CartScreen}
         options={{
-          tabBarLabel: 'Cart',
+          tabBarLabel: 'Delete',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-body" color={color} size={26} />
           )
         }}
       />
+
     </Tab.Navigator>
 
   return (
